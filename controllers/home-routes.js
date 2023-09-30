@@ -1,15 +1,10 @@
 const router = require('express').Router();
 const {Blog,Comment } = require('../models');
 
-//Get all Blog Posts and Comments
+//Get all Blog Posts
 router.get('/', async (req, res) => {
     try {
       const blogData = await Blog.findAll({
-        include: [
-          {
-            model: Comment
-          },
-        ],
       });
   
     //   const galleries = dbGalleryData.map((gallery) =>
