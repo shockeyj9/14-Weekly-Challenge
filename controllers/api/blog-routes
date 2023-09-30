@@ -24,10 +24,8 @@ router.get('/:id', async (req, res) => {
   }
 });
 
-//Get blog by user ID
+//Get all blogs by user ID
 router.get('/user/:id', async (req, res) => {
-  // find one blog by its `id` value
-  // be sure to include its associated comments
   try {
     const blogData = await Blog.findAll({
       where: {
@@ -35,9 +33,9 @@ router.get('/user/:id', async (req, res) => {
       }
     });
 
-    //error handling if there is no entry with that id
+    //error handling if there is no user with that id
     if (!blogData){
-      res.status(404).json({message: 'No blog found with that id'});
+      res.status(404).json({message: 'No blog found for that user'});
       return;
     }
 
@@ -77,5 +75,22 @@ router.put('/:id', async (req, res) => {
   }
 });
 
+
+// delete a blog by its `id` value
+router.delete('/:id', async (req, res) => {
+  try {
+    const blogDelete = await Blog.destroy({
+      where: {id: req.params.id}
+    });
+        //error handling if there's no product with that id
+    if (!blogDelete) {
+      res.status(404).json({ message: 'No blog with this id!' });
+      return;
+    }
+    res.status(200).json(blogDelete);
+  } catch (error) {
+    res.status(500).json(err);
+  }
+});
 
 module.exports = router;
