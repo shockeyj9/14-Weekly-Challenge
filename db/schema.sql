@@ -1,0 +1,3 @@
+DROP DATABASE IF EXISTS challenge14_db;
+
+CREATE DATABASE challenge14_db;
