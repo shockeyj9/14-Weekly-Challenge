@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const {Blog,Comment } = require('../models');
+const {Blog,User } = require('../models');
 
 //Get all Blog Posts
 router.get('/', async (req, res) => {
@@ -22,6 +22,6 @@ router.get('/', async (req, res) => {
   });
 
 
-//login route needs added here
+
 
 module.exports = router;
