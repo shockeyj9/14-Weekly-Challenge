@@ -1,0 +1,14 @@
+<section class="container">
+  <h3 class="blog-name">{{Title}}</h3>
+  <section class="flex-row justify-center">
+    <article>{{Content}}</article>
+    <article class="comment-card">
+  {{#each comments}}
+    {{> comment-details}}
+  {{/each}}
+    </article>
+  </section>
+</section>
+
+
+<button>Add Comment</button>
