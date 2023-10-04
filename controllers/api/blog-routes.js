@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const { Blog,Comment, User } = require('../../models');
+const {withAuth} = require('../../utils/auth');
 
 // api/blogs
 
@@ -25,7 +26,7 @@ router.get('/:id', async (req, res) => {
 });
 
 //Get all blogs by user ID
-router.get('/user/:id', async (req, res) => {
+router.get('/user/:id', withAuth,async (req, res) => {
   try {
     const blogData = await Blog.findAll({
       where: {
@@ -47,7 +48,7 @@ router.get('/user/:id', async (req, res) => {
 
 
 //Create new blog post
-router.post('/', async (req, res) => {
+router.post('/', withAuth,async (req, res) => {
   try {
       const blogData = await Blog.create({
           Title: req.body.title,
@@ -61,7 +62,7 @@ router.post('/', async (req, res) => {
 });
 
 // update a blog by its `id` value
-router.put('/:id', async (req, res) => {
+router.put('/:id', withAuth,async (req, res) => {
   try {
 
     const blogUpdate = await  Blog.update(
@@ -77,7 +78,7 @@ router.put('/:id', async (req, res) => {
 
 
 // delete a blog by its `id` value
-router.delete('/:id', async (req, res) => {
+router.delete('/:id', withAuth,async (req, res) => {
   try {
     const blogDelete = await Blog.destroy({
       where: {id: req.params.id}
