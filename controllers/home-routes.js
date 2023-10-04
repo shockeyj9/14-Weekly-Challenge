@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const {Blog,User,Comment } = require('../models');
+const {withAuth} = require('../utils/auth');
 
 //Get all Blog Posts
 router.get('/', async (req, res) => {
@@ -21,7 +22,7 @@ router.get('/', async (req, res) => {
     }
   });
 
-  router.get('/blog/:id', async (req, res) => {
+  router.get('/blog/:id', withAuth, async (req, res) => {
     // find one blog by its `id` value
     // be sure to include its associated comments
     try {
@@ -35,29 +36,23 @@ router.get('/', async (req, res) => {
     }
   });
 
-//Get all blogs by user ID
-router.get('/dashboard', async (req, res) => {
+//Get all blogs by user ID if signed in
+router.get('/dashboard', withAuth, async (req, res) => {
   try {
-    const blogData = await Blog.findAll({
-      include: [{model: User, where: {id: 1}}] //--->TODO: HOW DO i TIE THIS TO THE USER WHO IS CURRENTLY SIGNED IN???
-    });
+      const userData = await User.findByPk(req.session.user_id, {
+        attributes: { exclude: ['password'] },
+        include: [{ model: Blog }],
+      })
+      const user = userData.get({ plain: true });
 
-    //error handling if there is no user with that id
-    if (!blogData){
-      res.status(404).json({message: 'No blog found for that user'});
-      return;
+      res.render('dashboard', {
+        ...user,
+        logged_in: true
+      });
+    } catch (err) {
+      res.status(500).json(err);
     }
-    const blogs = blogData.map((blog) =>
-    blog.get({ plain: true })
-    );
-    res.render('dashboard', {
-      blogs,
-      // loggedIn: req.session.loggedIn,
-    });
-  } catch (err) {
-    res.status(500).json(err);
-  }
-});
+  });
 
 
 
