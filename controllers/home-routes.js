@@ -14,7 +14,7 @@ router.get('/', async (req, res) => {
       );
       res.render('homepage', {
         blogs,
-        // loggedIn: req.session.loggedIn,
+        loggedIn: req.session.loggedIn,
       });
     } catch (err) {
       console.log(err);
@@ -65,6 +65,14 @@ router.get('/login', async (req, res) => {
   }
 });
 
+router.get('/signup', async (req, res) => {
+  try {
+    
+    res.render('signup');
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
 
 
 module.exports = router;
