@@ -59,6 +59,15 @@ router.get('/dashboard', withAuth, async (req, res) => {
     }
   });
 
+router.get('/newpost', withAuth, async (req, res) => {
+  try {
+    
+    res.render('new-post');
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
 
 
 router.get('/login', async (req, res) => {
