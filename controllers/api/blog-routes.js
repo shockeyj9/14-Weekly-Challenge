@@ -53,7 +53,7 @@ router.post('/', withAuth,async (req, res) => {
       const blogData = await Blog.create({
           Title: req.body.title,
           Content: req.body.content,
-          User_ID: req.body.user_id,
+          User_ID: req.session.user_id,
       });
       res.status(200).json(blogData);
   } catch (err) {
