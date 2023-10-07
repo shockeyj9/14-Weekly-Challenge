@@ -2,6 +2,16 @@
   <h3 class="blog-name">{{Title}}</h3>
   <section class="flex-row justify-center">
     <article>{{Content}}</article>
+  <button class="btn-primary add-comment">Add Comment</button>
+  <form class="hidden-form" hidden>
+    <div>  
+    <label for="comment">Comment</label>
+    <textarea name="form-comment" id="comment" cols="30" rows="10"></textarea>
+    </div>
+    <div>
+      <button type="submit" class="btn-primary">Submit</button>
+    </div>
+  </form>
     <article class="comment-card">
   {{#each comments}}
     {{> comment-details}}
@@ -10,5 +20,4 @@
   </section>
 </section>
 
-
-<button>Add Comment</button>
+<script src="/js/comment.js"></script> 
