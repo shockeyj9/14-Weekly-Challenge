@@ -39,14 +39,19 @@ router.get('/', async (req, res) => {
 //Get all blogs by user ID if signed in
 router.get('/dashboard', withAuth, async (req, res) => {
   try {
-      const userData = await User.findByPk(req.session.user_id, {
-        attributes: { exclude: ['password'] },
-        include: [{ model: Blog }],
+      const blogData = await Blog.findAll({
+        
+        include: [{ model: User, 
+          where: {id: req.session.user_id},
+          attributes: { exclude: ['password'] }, 
+        }],
       })
-      const user = userData.get({ plain: true });
-
+      const blogs = blogData.map((blog) =>
+      blog.get({ plain: true })
+      );
+      console.log(blogs);
       res.render('dashboard', {
-        ...user,
+        blogs,
         loggedIn: true
       });
     } catch (err) {
