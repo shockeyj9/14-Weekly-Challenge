@@ -64,7 +64,7 @@ router.post('/', withAuth,async (req, res) => {
 // update a blog by its `id` value
 router.put('/:id', withAuth,async (req, res) => {
   try {
-
+    console.log('API Call starting');
     const blogUpdate = await  Blog.update(
       {Title: req.body.title,
       Content: req.body.content},
@@ -80,17 +80,19 @@ router.put('/:id', withAuth,async (req, res) => {
 // delete a blog by its `id` value
 router.delete('/:id', withAuth,async (req, res) => {
   try {
-    const blogDelete = await Blog.destroy({
+    const blog = await Blog.findOne({
       where: {id: req.params.id}
-    });
+    })
+    await blog.destroy();
         //error handling if there's no product with that id
-    if (!blogDelete) {
+    if (!blog) {
       res.status(404).json({ message: 'No blog with this id!' });
       return;
     }
-    res.status(200).json(blogDelete);
-  } catch (error) {
+    res.status(200).json(blog);
+  } catch (err) {
     res.status(500).json(err);
+    console.log(err)
   }
 });
 
