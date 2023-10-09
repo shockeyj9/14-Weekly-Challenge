@@ -30,7 +30,10 @@ router.get('/', async (req, res) => {
         include: [{model: User},{model:Comment}],
       });
       const blogs = blogData.get({ plain: true });
-      res.render('blog',blogs);
+      res.render('blog',
+        {...blogs,
+          userID: req.session.user_id,
+      });
     } catch (err) {
       res.status(500).json(err);
     }
@@ -49,7 +52,7 @@ router.get('/dashboard', withAuth, async (req, res) => {
       const blogs = blogData.map((blog) =>
       blog.get({ plain: true })
       );
-      console.log(blogs);
+
       res.render('dashboard', {
         blogs,
         loggedIn: true

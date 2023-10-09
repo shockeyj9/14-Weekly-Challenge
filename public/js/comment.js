@@ -8,7 +8,6 @@ const newCommentHandler = async (event) => {
     const content = document.querySelector('#comment').value.trim();
     const blogID = document.location.pathname.split("/")[2];
 
-
     if (content) {
       const response = await fetch(`/api/comments`, 
       {
@@ -30,7 +29,6 @@ const newCommentHandler = async (event) => {
   document
   .querySelector('.hidden-form')
   .addEventListener('submit', newCommentHandler);
-
 
   document
   .querySelector('.add-comment')
