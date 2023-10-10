@@ -1,0 +1,155 @@
+:root{
+    --header-bg-color: #012E40;
+    --navbar-color: #038C8C;
+    --bg-color: #8fd4cd;
+    --navbar-shadow-color: #65a3bb;
+    --button-color: #2b6e88;
+}
+
+body{
+    background-color: var(--bg-color);
+}
+.header {
+    overflow: hidden;
+    background-color: var(--header-bg-color);
+    color: var(--bg-color);
+  }
+  main{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  h1{
+    padding-left: 30px;
+    position: relative;
+    left: 15px;
+    width: 15%;
+    background-color: var(--bg-color);
+    color: var(--header-bg-color);
+    border-radius: 5px;
+    box-shadow: 10px 5px 5px var(--navbar-shadow-color);
+  }
+.card{
+    width: 75%;
+}
+
+.card header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--header-bg-color);
+    color: var(--bg-color);
+    margin-top: 25px;
+    height: 35px;
+    padding: 0% 1%;
+}
+.card article{
+    overflow: hidden;
+    border: 3px solid var(--header-bg-color);
+    color: var(--header-bg-color);
+    height: 25px;
+    padding: 0% 1%;
+}
+
+.footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    /* left: 0; */
+    bottom: 25px;
+    width: 35%;
+    height: 35px;
+    background-color: var(--button-color);
+    text-align: center;
+    border-radius: 5px;
+  }
+  footer a {
+    width: 100%;
+  }
+
+  button{
+    width: 35%;
+    height: 35px;
+    background-color: var(--button-color);
+    color: var(--bg-color);
+    font-size: 20px;
+    font-weight: bolder;
+    text-align: center;
+    border-radius: 5px;
+  }
+
+  a{
+    color: var(--bg-color);
+    text-decoration: none;
+  }
+  .topnav {
+    list-style: none;
+    display: flex;
+    flex-direction: left;
+    overflow: hidden;
+  }
+
+  .topnav a {
+    float: left;
+    display: block;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 20px;
+  }
+  .topnav a:hover {
+    background-color: var(--navbar-color);
+    color: var(--header-bg-color);
+  }
+
+  form{
+    display: flex;
+    flex-direction: column;
+    justify-content: baseline;
+    text-align:center;
+    border:  solid var(--header-bg-color);
+    width: 25%;
+    font-size: 20px;
+  }
+  .form-group{
+    display: flex;
+    justify-content: space-between;
+  }
+  input textarea{
+    width: 75%;
+  }
+
+  form div{
+    padding: 20px;
+  }
+
+  form a {
+    text-decoration: underline;
+    color:var(--header-bg-color);
+  }
+
+ .form{
+    display: flex;
+    flex-direction: column;
+  }
+  .form .form-group{
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+  }
+  .form .button{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+  }
+
+.form button{
+    width: 90%;
+}
+input{
+    height: 25px;
+}
+  textarea{
+    height: 80px;
+  }

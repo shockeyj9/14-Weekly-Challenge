@@ -1,4 +1,4 @@
-<section class="container">
+
   {{#if (isUser user.id userID)}}
   <h3 class="blog-name">Edit Post</h3>
 
@@ -11,10 +11,10 @@
         <label for="blog-content">Content</label>
         <textarea class="form-input" id="blog-content" name="blog-content">{{Content}}</textarea>
       </div>
-      <div class="form-group">
+      <div class="form-group button">
         <button type="submit" class="btn btn-update">Update Post</button>
       </div>
-            <div class="form-group">
+            <div class="form-group button">
         <button type="submit" class="btn btn-delete">Delete</button>
       </div>
     </form>
@@ -40,7 +40,7 @@
       </article>
     </section>
   {{/if}}
-</section>
+
 
 <script src="/js/blog.js"></script> 
 
