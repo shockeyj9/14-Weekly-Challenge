@@ -1,19 +1,19 @@
 <head>
   <meta charset="UTF-8">
   <title>Blog Post</title>
-  {{!-- <link rel="stylesheet" href="/">
-  <link rel="stylesheet" href="/"> --}}
+  <link rel="stylesheet" href="/css/style.css">
+
 </head>
 
 <body>
   <div class="flex-column justify-space-around">
-    <header class="display-flex justify-space-between align-center p-2">
+    <header class="header">
       <nav>
-        <ul>
+        <ul class="topnav">
           <li> <a href="/">Home</a></li>
           <li> <a href="/dashboard">Dashboard</a> </li>
           {{#if loggedIn}}
-          <button class="no-button" id="logout">Logout</button>
+          <li><a href="" id="logout">Logout</a></li>
           {{else}}
           <li> <a href="/login">Login</a> </li>
           {{/if}}
