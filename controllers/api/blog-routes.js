@@ -64,7 +64,6 @@ router.post('/', withAuth,async (req, res) => {
 // update a blog by its `id` value
 router.put('/:id', withAuth,async (req, res) => {
   try {
-    console.log('API Call starting');
     const blogUpdate = await  Blog.update(
       {Title: req.body.title,
       Content: req.body.content},

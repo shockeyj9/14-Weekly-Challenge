@@ -5,10 +5,10 @@ const { User } = require('../../models');
 
 // CREATE new user
 router.post('/', async (req, res) => {
-  console.log('sign in route initiated')
     try {
       const dbUserData = await User.create(
         {
+        username: req.body.username,
         email: req.body.email,
         password: req.body.password,
         }
@@ -19,7 +19,7 @@ router.post('/', async (req, res) => {
          req.session.loggedIn = true;
          res.status(200).json(dbUserData);   
     });
-    res.status(200).json(dbUserData);
+
     } catch (err) {
       console.log(err);
       res.status(500).json(err);
